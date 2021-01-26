@@ -1,0 +1,30 @@
+{% extends 'projects/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <main class="page projects-page">
+        <section class="portfolio-block projects-cards">
+            <div class="container">
+                <div class="heading">
+                    <h2>Recent Work</h2>
+                </div>
+                <div class="row">
+                {% for project in projects.all %}
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-0"><a href="{% url 'projects:project_details' project.pk %}">
+                            <img class="card-img-top scale-on-hover" src="{{ project.image.path }}" alt="{{ project.image.alt_text }}">
+                        </a>
+                            <div class="card-body">
+                                <h6><a href=" {% url 'projects:project_details' project.pk %}">{{ project.title }}</a></h6>
+                                <p class="text-muted card-text">{{ project.short_description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

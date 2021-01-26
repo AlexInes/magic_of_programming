@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="page">
+     <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    <div class="heading">
+                        <h1 class="blog-title">{{ post.title }}</h1>
+                        <small>Created on: {{ post.created_on }}</small><br>
+                        {% for category in post.categories.all %}
+                            <span class="category">{{ category.name }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <br>
+                    {{ post.body|safe }}
+                </div>
+            </div>
+        </div>
+    </article>
+    </main>
+
+
+{% endblock %}

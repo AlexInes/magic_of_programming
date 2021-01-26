@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <main class="page cv-page">
+        <section class="portfolio-block block-intro border-bottom">
+            <div class="container">
+                <div class="avatar" style="background-image:url({{ web_info.avatar_url }});"></div>
+                <div class="about-me">
+                    <p>{{ web_info.welcome_message }}</p><a class="btn btn-outline-primary" role="button" href="#">Hire me</a></div>
+            </div>
+        </section>
+        <section class="portfolio-block cv">
+            <div class="container">
+                <div class="work-experience group">
+                    <div class="heading">
+                        <h2 class="text-center">Work Experience</h2>
+                    </div>
+                    {% for work in works %}
+                        {% if work.display %}
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>{{ work.job_title }}</h3>
+                                        <h4 class="organization">{{ work.company }}</h4>
+                                    </div>
+                                    <div class="col-md-6"><span class="period">{{ work.start_date }} - {{ work.end_date }}</span></div>
+                                </div>
+                                <p class="text-muted">{{ work.short_description }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                <div class="education group">
+                    <div class="heading">
+                        <h2 class="text-center">Education</h2>
+                    </div>
+                    {% for education_item in educations %}
+                        {% if education_item.display %}
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>{{ education_item.field_of_study }}</h3>
+                                        <h4 class="organization">{{ education_item.institution }}</h4>
+                                    </div>
+                                    <div class="col-6"><span class="period">{{ education_item.start_date }} - {{ education_item.end_date }}</span></div>
+                                </div>
+                                <p class="text-muted">{{ education_item.short_description }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                <div class="group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="skills portfolio-info-card">
+                                <h2>Skills</h2>
+
+                                {% for skill in skills %}
+                                    {% if skill.display %}
+                                        <h3>{{ skill.name }}</h3>
+                                        <div class="progress">
+                                            <div class="progress-bar" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ skill.percentage }}%;"><span class="sr-only">{{ skill.percentage }}%</span></div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-info portfolio-info-card">
+                                <h2>Contact Info</h2>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-person icon"></i></div>
+                                    <div class="col-9"><span>{{ web_info.name }}</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-ios-telephone icon"></i></div>
+                                    <div class="col-9"><span>{{ web_info.phone }}</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-at icon"></i></div>
+                                    <div class="col-9"><span>{{ web_info.email }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hobbies group">
+                    <div class="heading">
+                        <h2 class="text-center">Hobbies</h2>
+                    </div>
+                    <p class="text-center text-muted">{{ web_info.hobbies_text|safe }}</p>
+                </div>
+            </div>
+        </section>
+    </main>
+   {% endblock %}

@@ -26,3 +26,7 @@ db.sqlite3-journal
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+
+venv/
+.idea/
+
