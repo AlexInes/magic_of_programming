@@ -1,4 +1,4 @@
-{% extends 'projects/base.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -14,7 +14,7 @@
 
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0"><a href="{% url 'projects:project_details' project.pk %}">
-                            <img class="card-img-top scale-on-hover" src="{{ project.image.path }}" alt="{{ project.image.alt_text }}">
+                            <img class="card-img-top scale-on-hover" src="{{ project.image.url }}" alt="{{ project.image.alt_text }}">
                         </a>
                             <div class="card-body">
                                 <h6><a href=" {% url 'projects:project_details' project.pk %}">{{ project.title }}</a></h6>

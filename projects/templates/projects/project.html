@@ -1,4 +1,4 @@
-{% extends 'projects/base.html' %}
+{% extends 'base.html' %}
 
 
 {% block content %}
@@ -8,7 +8,7 @@
                 <div class="heading">
                     <h2>{{ project.title }}</h2>
                 </div>
-                <div class="image" style="background-image:url({{ project.image.path }});"></div>
+                <div class="image" style="background-image:url({{ project.image.url }});"></div>
                 <div class="row">
                     <div class="col-12 col-md-6 offset-md-1 info">
                         <h3>Description</h3>

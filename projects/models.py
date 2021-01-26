@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from ckeditor.fields import RichTextField
 
 
 class Tool(models.Model):
@@ -21,10 +20,11 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name_plural = "Categories"
 
 
 class Image(models.Model):
-    path = models.FilePathField(path="/projects/static/img")
+    url = models.URLField()
     alt_text = models.CharField(max_length=50)
 
     def __str__(self):
@@ -39,10 +39,13 @@ class Project(models.Model):
     categories = models.ManyToManyField(Category)
     tools = models.ManyToManyField(Tool)
     short_description = models.CharField(max_length=150)
-    description = models.CharField(max_length=2000)
+    description = RichTextField()
     source_url = models.CharField(max_length=250, null=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    image = models.ManyToManyField(Image)
+    image = models.OneToOneField(
+        Image,
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.title

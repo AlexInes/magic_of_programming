@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'projects'
+    'landing_page',
+    'projects',
+    'blog',
+    'ckeditor',
+    'phonenumber_field',
+    'solo.apps.SoloAppConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -55,7 +61,10 @@ ROOT_URLCONF = 'magic_of_programming.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR / 'templates',
+                 os.path.join(BASE_DIR, 'landing_page/templates/landing_page/'),
+                 os.path.join(BASE_DIR, 'projects/templates/projects'),
+                 os.path.join(BASE_DIR, 'blog/templates/blog')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -119,4 +128,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+
+# Add these new lines
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
