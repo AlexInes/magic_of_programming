@@ -19,5 +19,5 @@ Used for:
 * hobbies 
 ### Django Phonenumber Field
 A Django library which interfaces with python-phonenumbers to validate, pretty print and convert phone numbers. python-phonenumbers is a port of Google's libphonenumber library, which powers Android's phone number handling.
-###Django Solo
+### Django Solo
 A Django library that helps working with singletons. Added to the project for the managing site configuration. It provides changes to the Django admin panel along with the singleton model type. 
