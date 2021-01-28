@@ -19,8 +19,7 @@ password: test
 Alternatively, you can create superuser from a console:
 ```python manage.py createsuperuser```
 
-Once this command completes a new superuser will have been added to the database. Now restart the development server so we can test the login:
-
+Once this command completes a new superuser will have been added to the database. Now run the development server:
 ```python3 manage.py runserver```
 
 
