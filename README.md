@@ -10,6 +10,20 @@ pip install -r requirements.txt
 
 By default, the app uses SQLite for data storage. Before deploying on a production server, switch the database engine for security and performance.
 
+For testing convenience, SQLite file was added. For testing convenience, SQLite file was added. You can use an already existing admin account to access the administration panel:
+```
+localhost:8000/admin
+login: admin
+password: test
+```
+Alternatively, you can create superuser from a console:
+```python manage.py createsuperuser```
+
+Once this command completes a new superuser will have been added to the database. Now restart the development server so we can test the login:
+
+```python3 manage.py runserver```
+
+
 ## Additional packages
 ### Django CKEditor
 Provides an easy way to add rich text editor to Django admin. 
